@@ -1,0 +1,17 @@
+---
+
+name: pull-request-workflow
+
+on:
+    pull_request:
+        branches:
+          - dev
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+          - name: get the code
+            uses: actions/checkout@v6
+          - name: package the code
+            run: mvn package
