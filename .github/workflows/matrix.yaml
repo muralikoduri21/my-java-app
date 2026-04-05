@@ -13,6 +13,7 @@ jobs:
           fail-fast: true
           matrix:
             java-version: [17,21]
+            distribution: ['temurin', 'corretto', 'microsoft']
         steps:
           - name: get the code
             uses: actions/checkout@v6
