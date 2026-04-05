@@ -1,0 +1,27 @@
+---
+
+name: manual-workflow
+
+on:
+    workflow_dispatch:
+      
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        strategy:
+          fail-fast: true
+          matrix:
+            java-version: [17,21]
+        steps:
+          - name: get the code
+            uses: actions/checkout@v6
+          - name: setup Java
+            uses: actions/setup-java@5
+            with:
+                java-version: ${{ matrix.java-version }}
+                distribution: temurin
+          - name: check the java version
+            run: java -version
+          - name: package the code
+            run: mvn --batch-mode  -Dmaven.test.failure.ignore=true test
