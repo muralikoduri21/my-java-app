@@ -17,11 +17,11 @@ jobs:
             - name: get the code
               uses: actions/checkout@v4
             - name: initilize codeql
-              uses: github/codeql-actiokn/init@v4
+              uses: github/codeql-action/init@v4
             - name: packeing the code
               run: mvn --batch-mode  -Dmaven.test.failure.ignore=true test
             - name: perform code quality analyis
-              uses: github/codeql-actions/analyze@v4
+              uses: github/codeql-action/analyze@v4
             - name: publish test results
               uses: EnricoMi/publish-unit-test-result-action@v2
               with:
