@@ -41,6 +41,6 @@ public class AppTest
      */
     public void testAppOther()
     {
-        assertTrue( true );
+        assertTrue( false );
     }
 }
