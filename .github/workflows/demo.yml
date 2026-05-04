@@ -9,7 +9,7 @@ permissions:
   contents: read       # ← needed to read the repo
   pull-requests: write # ← needed to post PR comments
 
-  
+
 jobs:
     build:
         runs-on: ubuntu-latest
@@ -17,7 +17,7 @@ jobs:
             - name: get the code
               uses: actions/checkout@v4
             - name: packeing the code
-              run: mvn package 
+              run: mvn --batch-mode  -Dmaven.test.failure.ignore=true test
             - name: publish test results
               uses: EnricoMi/publish-unit-test-result-action@v2
               with:
