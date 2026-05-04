@@ -8,6 +8,7 @@ permissions:
   checks: write        # ← needed to create check runs
   contents: read       # ← needed to read the repo
   pull-requests: write # ← needed to post PR comments
+  security-events: write # ← this is what CodeQL needs
 
 
 jobs:
@@ -18,12 +19,12 @@ jobs:
               uses: actions/checkout@v4
             - name: initilize codeql
               uses: github/codeql-action/init@v4
+              with:
+                languages: java
             - name: packeing the code
               run: mvn --batch-mode  -Dmaven.test.failure.ignore=true test
             - name: perform code quality analyis
               uses: github/codeql-action/analyze@v4
-              with:
-                languages: java
             - name: publish test results
               uses: EnricoMi/publish-unit-test-result-action@v2
               with:
