@@ -4,12 +4,7 @@ on:
         branches:
             - main
 
-permissions:
-  checks: write        # ← needed to create check runs
-  contents: read       # ← needed to read the repo
-  pull-requests: write 
 
-  
 jobs:
     build:
         runs-on: ubuntu-latest
@@ -21,5 +16,5 @@ jobs:
             - name: publish test results
               uses: EnricoMi/publish-unit-test-result-action@v2
               with:
-                files: "**/target/surefire-reports/**/*.xml"
-                comment_mode: always
+                  files: "**/target/surefire-reports/**/*.xml"
+                  comment_mode: always
