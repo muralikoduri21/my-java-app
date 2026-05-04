@@ -3,6 +3,13 @@ on:
     push:
         branches:
             - main
+
+permissions:
+  checks: write        # ← needed to create check runs
+  contents: read       # ← needed to read the repo
+  pull-requests: write 
+
+  
 jobs:
     build:
         runs-on: ubuntu-latest
